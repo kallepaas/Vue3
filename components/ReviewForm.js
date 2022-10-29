@@ -7,10 +7,10 @@ app.component('review-form', {
         <input id="name" v-model="name">
   
         <label for="review">Arvustus:</label>      
-          <textarea id="review" v-model="review"></textarea>
+        <textarea id="review" v-model="review"></textarea>
   
         <label for="rating">Hinnang tootele:</label>
-         <select id="rating" v-model,number="rating">
+        <select id="rating" v-model,number="rating">
             <option>5</option>
             <option>4</option>
             <option>3</option>
@@ -18,7 +18,7 @@ app.component('review-form', {
             <option>1</option>
         </select>
   
-        <input class="button" type="submit" value="Submit">
+        <input class="button" type="submit" value="Saada">
     </form>`,
     data() {
         return {
@@ -31,6 +31,7 @@ app.component('review-form', {
         onSubmit() {
             if (this.name === '' || this.review === '' || this.rating === null) {
                 alert('Palun täitke kõik väljad!')
+                return
             }
 
             let productReview = {
