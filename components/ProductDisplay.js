@@ -38,6 +38,8 @@ app.component('product-display', {
         <button class="button" v-on:click="removeFromCart">Eemalda ostukorvist</button>
       </div>
     </div>
+    <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
   </div>`,
 
   data() {
@@ -61,6 +63,8 @@ app.component('product-display', {
         ],
         // challenge'i lahedus, ei mõelnud ise välja
         onSale: true,
+        // Lesson 11
+        reviews: []
     }
 },
 methods: {
@@ -73,6 +77,9 @@ methods: {
       },
         updateVariant(index) {
             this.selectedVariant = index
+        },
+        addReview(review) {
+            this.reviews.push(review)
         },
 },
 computed: {
