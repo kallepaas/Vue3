@@ -16,9 +16,9 @@
     <div id="app">
       <div class="nav-bar"></div>
       
-      <div class="cart">Ostukorv({{ cart }})</div>
+      <div class="cart">Ostukorv({{ cart.length }})</div>
 
-      <product-display :premium="premium"></product-display>
+      <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeById"><!-- challenge'i lahendus--></product-display>
 
     </div>
 
