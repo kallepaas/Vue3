@@ -22,18 +22,17 @@
         <div class="product-container">
           <div class="product-image">
             <!-- vbind:src võib lühendada :src; coding challenge'ist mitteaktiivne toote tuhmiks -->
-            <img :class="{ 'out-of-stock-img': !onsale }" v-bind:src="image">
+            <img :class="{ 'out-of-stock-img': !inStock }" v-bind:src="image">
           </div>
           <div class="product-info">
-            <h1>{{ product }}</h1>
+            <h1>{{ title }}</h1>
+            <!-- challenge'i lahendus, ei mõelnud ise välja -->
+            <p v-if="onSale">{{ saleMessage }}</p>
             <!-- Coding challenge'is loodud -->
-            <p v-if="onsale">Uus toode!</p>
+            <p v-if="inStock">On saadaval.</p>
+            <p v-else>Pole saadaval</p>
             <!-- Coding challenge'is lingi lisamine tootele -->
             <a :href="url" target="_blank">Vaata videot sokkidest</a>
-            <!-- Järgmised kolm rida: kuva eri sõnumeid vastavalt laoseisule -->
-            <p v-if="inventory > 10">Saadavus: laos olemas</p>
-            <p v-else-if="inventory <= 10 && inventory >0">Saadavus: peaaegu läbi müüdud</p>
-            <p v-else>Pole saadaval</p>
             <!-- tooteinfo lisamine -->
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
@@ -43,9 +42,9 @@
               <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
             </ul>
             <!-- värvide lisamine -->
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{ backgroundColor: variant.color }"></div>
+            <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{ backgroundColor: variant.color }"></div>
             <!-- Lisa ostukorvi ja eemalda ostukorvist nupud-->
-            <button class="button" :class="{ disabledButton: !onsale }" :disabled="!onsale" v-on:click="addToCart">Lisa ostukorvi</button>
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Lisa ostukorvi</button>
             <button class="button" v-on:click="removeFromCart">Eemalda ostukorvist</button>
           </div>
         </div>
