@@ -20,7 +20,14 @@
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-            <a :href="url" target="_blank">Voco koduleht</a>
+            <!-- Coding challenge'is -->
+            <p v-if="onsale">Nüüd müügil!</p>
+            <!-- Järgmised kolm rida: kuva eri sõnumeid vastavalt laoseisule -->
+            <p v-if="inventory > 10">Saadavus: laos olemas</p>
+            <p v-else-if="inventory <= 10 && inventory >0">Saadavus: peaaegu läbi müüdud!</p>
+            <p v-else>Pole saadaval</p>
+            <!-- Coding challenge'is lingi lisamine tootele -->
+            <a :href="url" target="_blank">Vaata videot sokkidest</a>
           </div>
         </div>
       </div>

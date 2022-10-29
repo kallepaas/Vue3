@@ -1,9 +1,16 @@
 const app = Vue.createApp({
     data() {
         return {
-            product: 'Socks',
+            // toote nimi
+            product: 'Sokid',
+            // toote pilt
             image: './assets/images/socks_green.jpg',
-            url: 'https://www.voco.ee'
+            // video
+            url: 'https://www.youtube.com/watch?v=8JVpRtngAJU',
+            // "Müügil" teade
+            onsale: true,
+            // laoseis
+            inventory: 8,
         }
     }
 })
