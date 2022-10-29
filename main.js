@@ -18,8 +18,8 @@ const app = Vue.createApp({
             sizes: ['36-38', '39-41', '42-44'],
             // toote variandid
             variants: [
-                { id: 2234, color: 'roheline', image: './assets/images/socks_green.jpg'},
-                { id: 2235, color: 'sinine', image: './assets/images/socks_blue.jpg'},
+                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg'},
+                { id: 2235, color: 'darkblue', image: './assets/images/socks_blue.jpg'},
             ]
         }
     },

@@ -21,8 +21,8 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <!-- vbind:src võib lühendada :src -->
-            <img v-bind:src="image">
+            <!-- vbind:src võib lühendada :src; coding challenge'ist mitteaktiivne toote tuhmiks -->
+            <img :class="{ 'out-of-stock-img': !onsale }" v-bind:src="image">
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
@@ -43,9 +43,9 @@
               <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
             </ul>
             <!-- värvide lisamine -->
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{ backgroundColor: variant.color }"></div>
             <!-- Lisa ostukorvi ja eemalda ostukorvist nupud-->
-            <button class="button" v-on:click="addToCart">Lisa ostukorvi</button>
+            <button class="button" :class="{ disabledButton: !onsale }" :disabled="!onsale" v-on:click="addToCart">Lisa ostukorvi</button>
             <button class="button" v-on:click="removeFromCart">Eemalda ostukorvist</button>
           </div>
         </div>
