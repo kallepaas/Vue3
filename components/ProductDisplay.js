@@ -16,21 +16,23 @@ app.component('product-display', {
       <div class="product-info">
         <h1>{{ title }}</h1>
         <!-- challenge'i lahendus, ei mõelnud ise välja -->
-        <p v-if="onSale">{{ saleMessage }}</p>
+        <!-- <p v-if="onSale">{{ saleMessage }}</p> -->
         <!-- Coding challenge'is loodud -->
-        <p v-if="inStock">On saadaval</p>
-        <p v-else>Pole saadaval</p>
-        <p>Saatmine: {{ shipping }}€</p>
-        <!-- Coding challenge'is lingi lisamine tootele -->
-        <a :href="url" target="_blank">Vaata videot sokkidest</a>
+        <p v-if="inStock">Toode on saadaval</p>
+        <p v-else>Toode pole saadaval</p>
         <!-- tooteinfo lisamine -->
+        <p>Toote info</p>
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
+        <!-- Coding challenge'is lingi lisamine tootele -->
+        <i class="fa-solid fa-video fa-xl">&nbsp;</i><a :href="url" target="_blank">Vaata videot sokkidest</a>
         <!-- Coding challenge'ist, ise ei leidnud töötavat lahendust -->
+        <p>Saatmiskulu: {{ shipping }}€</p>
+        <!-- <p>Toote suurused</p>
         <ul>
           <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
-        </ul>
+        </ul> -->
         <!-- värvide lisamine -->
         <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{ backgroundColor: variant.color }"></div>
         <!-- Lisa ostukorvi ja eemalda ostukorvist nupud-->

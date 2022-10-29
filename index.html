@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-    <!-- Roboto font -->
+    <!-- Barlow font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   <!-- Fontawesome ikoonide kood --> 
+   <script src="https://kit.fontawesome.com/53cef6f324.js" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <div id="app">
       <div class="nav-bar"></div>
       
-      <div class="cart">Ostukorv({{ cart.length }})</div>
+      <div class="cart">
+        <div class="ostukorviikoon"><i class="fa-solid fa-cart-shopping fa-xl" alt="Ostukorv">&nbsp;</i></div>
+        <div class="ostukorviesemed">({{ cart.length }})</div>
+      </div>
 
       <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeById"><!-- challenge'i lahendus--></product-display>
 
