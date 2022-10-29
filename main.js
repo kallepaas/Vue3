@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            cart: 0,
             // toote nimi
             product: 'Sokid',
             // toote pilt
@@ -17,9 +18,23 @@ const app = Vue.createApp({
             sizes: ['36-38', '39-41', '42-44'],
             // toote variandid
             variants: [
-                { id: 2234, color: 'roheline' },
-                { id: 2235, color: 'sinine'},
+                { id: 2234, color: 'roheline', image: './assets/images/socks_green.jpg'},
+                { id: 2235, color: 'sinine', image: './assets/images/socks_blue.jpg'},
             ]
         }
+    },
+    methods: {
+            addToCart() {
+                this.cart += 1
+        },
+        // ise ei osanud kirjutada seda miinusesse minemise piirajat
+            removeFromCart() {
+                if (this.cart >= 1) {
+                    this.cart -=1
+                }
+        },
+            updateImage(variantImage) {
+                this.image = variantImage
+        },
     }
 })
